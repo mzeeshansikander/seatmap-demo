@@ -1,118 +1,165 @@
+import CustomModal from "@/components/CutomModal";
+import SeatImage from "@/components/SeatImage";
 import Image from "next/image";
-import { Inter } from "next/font/google";
+import { useState } from "react";
 
-const inter = Inter({ subsets: ["latin"] });
+// SeatImage component for rendering seat images with numbers
 
+// Main Home component
 export default function Home() {
+  const [selectedSeat, setSelectedSeat] = useState<string>("");
+
+  const [open, setOpen] = useState(false);
+
+  const onOpenModal = () => setOpen(true);
+
+  const onCloseModal = () => setOpen(false);
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="bg-[#0F0F0F] flex items-center justify-center h-screen w-screen">
+      <div className="bg-[#1B1B1B] h-[90%] w-[90%] m-auto rounded-lg shadow-lg p-5">
+        {/* Top Section */}
+        <section className="flex justify-center">
+          <Image src="/stage.png" alt="Stage" width={400} height={200} />
+        </section>
+
+        {/* Middle Section */}
+        <section className="flex justify-between items-center my-[3rem]">
+          {/* Left Column */}
+          <div>
+            <div className="flex gap-[4rem]">
+              <SeatImage
+                src="/seat.png"
+                alt="Seat"
+                top_Number="10"
+                top_NumberRight="15%"
+                top_NumberTop="30%"
+                // Bottom
+                bottom_Number="55"
+                bottom_NumberRight="15%"
+                bottom_NumberTop="50%"
+                rotateDegrees="rotate-[0deg]"
+              />
+              <SeatImage
+                src="/seat_tilt.png"
+                alt="Seat"
+                top_Number="30"
+                top_NumberRight="22%"
+                top_NumberTop="35%"
+                // Bottom
+                bottom_NumberTop="55%"
+                bottom_Number="75"
+                bottom_NumberRight="25%"
+                rotateDegrees="rotate-[0deg]"
+              />
+            </div>
+            <div className="flex gap-[4rem] mt-[5rem]">
+              <SeatImage
+                src="/seat.png"
+                alt="Seat"
+                top_Number="80"
+                top_NumberRight="15%"
+                top_NumberTop="30%"
+                // Bottom
+                bottom_Number="81"
+                bottom_NumberRight="15%"
+                bottom_NumberTop="50%"
+                rotateDegrees="rotate-[0deg]"
+              />
+              <SeatImage
+                src="/seat_tilt.png"
+                alt="Seat"
+                top_Number="90"
+                top_NumberRight="28%"
+                top_NumberTop="28%"
+                // Bottom
+                bottom_Number="91"
+                bottom_NumberRight="18%"
+                bottom_NumberTop="45%"
+                rotateDegrees="rotate-[330deg]"
+              />
+            </div>
+          </div>
+
+          {/* Center Box */}
+          <div
+            className="bg-[#612CF7] h-[200px] w-[300px] rounded-lg shadow-lg flex items-center justify-center text-white text-[24px] font-medium"
+            onClick={() => {
+              setSelectedSeat("you have selected general ticket");
+              onOpenModal();
+            }}
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+            General Admission
+          </div>
+
+          {/* Right Column */}
+          <div>
+            <div className="flex gap-[4rem]">
+              <SeatImage
+                src="/avb_seat_tilt.png"
+                alt="Seat"
+                top_Number="10"
+                top_NumberRight="0%"
+                top_NumberTop="35%"
+                top_NumberLeft="20%"
+                // Bottom
+                bottom_Number="55"
+                bottom_NumberRight="0"
+                bottom_NumberTop="55%"
+                bottom_NumberLeft="25%"
+                rotateDegrees="rotate-[0deg]"
+              />
+              <SeatImage
+                src="/seat.png"
+                alt="Seat"
+                top_Number="10"
+                top_NumberRight="0%"
+                top_NumberLeft="15%"
+                top_NumberTop="30%"
+                // Bottom
+                bottom_Number="55"
+                bottom_NumberTop="50%"
+                bottom_NumberLeft="15%"
+                rotateDegrees="rotate-[180deg]"
+              />
+            </div>
+            <div className="flex gap-[4rem] mt-[5rem]">
+              <SeatImage
+                src="/seat_tilt.png"
+                alt="Seat"
+                top_Number="10"
+                top_NumberRight="0%"
+                top_NumberTop="25%"
+                top_NumberLeft="25%"
+                // Bottom
+                bottom_Number="55"
+                bottom_NumberRight="0%"
+                bottom_NumberLeft="20%"
+                bottom_NumberTop="45%"
+                rotateDegrees="rotate-[190deg]"
+              />
+              <SeatImage
+                src="/seat.png"
+                alt="Seat"
+                top_Number="10"
+                top_NumberRight="0%"
+                top_NumberLeft="15%"
+                top_NumberTop="30%"
+                // Bottom
+                bottom_Number="55"
+                bottom_NumberTop="50%"
+                bottom_NumberLeft="15%"
+                rotateDegrees="rotate-[180deg]"
+              />
+            </div>
+          </div>
+        </section>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      <CustomModal
+        open={open}
+        onCloseModal={onCloseModal}
+        selectedSeat={selectedSeat}
+      />
+    </div>
   );
 }
