@@ -83,7 +83,7 @@ export default function Home() {
 
           {/* Center Box */}
           <div
-            className="bg-[#612CF7] h-[200px] w-[300px] rounded-lg shadow-lg flex items-center justify-center text-white text-[24px] font-medium"
+            className="bg-[#612CF7] h-[200px] w-[300px] rounded-lg shadow-lg flex items-center justify-center text-white text-[24px] font-medium cursor-pointer"
             onClick={() => {
               setSelectedSeat("you have selected general ticket");
               onOpenModal();
